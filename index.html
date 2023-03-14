@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Description bottom of embed -->
+    <meta name="description" content="Official vouches of Zahir" />
+    <meta property="og:description" content="Official vouches of Zahir" />
+
+    <!-- Tittel av embed Top-->
+    <meta property="og:site_name" content="zahir.ltd" />
+
+    <!-- Tittel av embed Main-->
+    <meta name="title" content="Zahir's Vouches" />
+    <meta property="og:title" content="Zahir's Vouches" />
+
+    <meta content="#7b88db" name="theme-color">
+
+    <meta property="og:image" content="images/Favicon/Purple/favicon-32x32.png" />
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="index.html" />
+
+    <link href="../cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/apeman.css" rel="stylesheet">
+    <link href="css/firefly.css" rel="stylesheet">
+    <script src="js/bootstrap.bundle.min.js" type="9917f83a9486abcf6d2c9532-text/javascript"></script>
+    <script src="js/jquery.js" type="9917f83a9486abcf6d2c9532-text/javascript"></script>
+    <script src="https://kit.fontawesome.com/face8736c2.js" crossorigin="anonymous"></script>
+
+    <title>Zahir Vouches</title>
+</head>
+<!--
+<div class="firefly"></div>
+<div class="firefly"></div>
+<div class="firefly"></div>
+<div class="firefly"></div>
+<div class="firefly"></div>
+<div class="firefly"></div>
+<div class="firefly"></div>
+<div class="firefly"></div>
+<div class="firefly"></div>
+<div class="firefly"></div>
+<div class="firefly"></div>
+<div class="firefly"></div>
+<div class="firefly"></div>
+<div class="firefly"></div>
+<div class="firefly"></div>-->
+
+<body>
+    <div class="container" id="page-container">
+        <div class="my-5" id="content-wrap">
+            <div class="align-items-center justify-content-between">
+                <h1>Zahir's <a id="vouch">Vouches</a></h1>
+                <a href="/currencies"><i class="fa-solid fa-dollar-sign"></i> Currencies</a> |
+                <a href="/tos"><i class="fa-solid fa-scroll"></i> TOS</a>
+            </div>
+            <!--<p id="count">Total vouches: <span id="counterSpan"></span></p>-->
+            <div id="social-icon-div" class="">
+                <a href="https://ogu.gg/Zahir" target="_blank"><img class="social" src="images/ogu.svg"></img></a>
+                <a href="https://t.me/MoneroMonkey" target="_blank"> <img class="social"
+                        src="images/telegram.svg"></img></a>
+                <a href="https://zahir.ltd/discord" target="_blank"><img class="social"
+                        src="images/discord.svg"></img></a>
+
+            </div>
+
+            <div class="align-items-center justify-content-between">
+                <br>
+                <p>All vouches from my Discord server are automatically transferred into this page.</p>
+            </div>
+        </div>
+        <div class="limiter">
+            <div class="container-table100">
+                <div class="wrap-table100">
+                    <div class="table100">
+                        <table>
+                            <thead>
+                                <tr class="table100-head">
+                                    <th class="column1">ID <i id="sort" class="fa-solid fa-sort" style="cursor: pointer"
+                                            onclick="reverseTable()" aria-hidden="true"></i></th>
+                                    <th class="column2">Discord Tag</th>
+                                    <th class="column3">Discord ID</th>
+                                    <th class="column4">Comment</th>
+                                    <th class="column5">Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyFinal">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class=" align-items-center justify-content-between">
+                <div>
+                    <p class="m-0 small" id="copyright">Made with 💜 by<a href="http://apeman.gg"
+                            target="_blank">Apeman</a></p>
+                </div>
+
+            </div>
+
+        </div>
+    </footer>
+    <script src="cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js"
+        data-cf-settings="9917f83a9486abcf6d2c9532-|49" defer=""></script>
+</body>
+<script src="js/apeman.js" type="9917f83a9486abcf6d2c9532-text/javascript"></script>
+<script>
+    let count, vouches = [];
+    fetch("vouches.json")
+        .then(function (resp) {
+            return resp.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            count = data.count;
+            vouches = data.vouches;
+
+            console.log("length:" + vouches.length);
+            console.log(vouches[0]["Number_ID"]);
+            console.log(vouches[0]["Date"]);
+            console.log("before");
+            var row_data = '';
+
+            for (var i = vouches.length - 1; i >= 0; i--) {
+
+
+                var row_data = row_data +
+                    '<tr id="' + vouches[i]["Number_ID"] + '">' +
+                    ' <td class="column1">' + vouches[i]["Number_ID"] + '</td>' +
+                    ' <td class="column2">' + vouches[i]["CustomerID"] + '</td>' +
+                    ' <td class="column3">' + vouches[i]["AccountID"] + '</td>' +
+                    ' <td class="column4">' + vouches[i]["Comment"] + '</td>' +
+                    ' <td class="column5">' + vouches[i]["Date"] + '</td>' +
+
+                    '</tr>';
+
+            }
+            var table_body_element = document.getElementById('tbodyFinal');
+            table_body_element.innerHTML = row_data;
+            document.getElementById('my_table').appendChild(table_body_element);
+
+
+        });
+
+    function reverseTable() {
+        $('tbody').each(function (elem, index) {
+            const arr = $.makeArray($('tr', this).detach());
+            arr.reverse();
+            $(this).append(arr);
+        });
+    };
+</script>
+
+</html>
