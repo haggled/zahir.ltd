@@ -120,19 +120,10 @@
             return resp.json();
         })
         .then(function (data) {
-            console.log(data);
             count = data.count;
             vouches = data.vouches;
-
-            console.log("length:" + vouches.length);
-            console.log(vouches[0]["Number_ID"]);
-            console.log(vouches[0]["Date"]);
-            console.log("before");
             var row_data = '';
-
             for (var i = vouches.length - 1; i >= 0; i--) {
-
-
                 var row_data = row_data +
                     '<tr id="' + vouches[i]["Number_ID"] + '">' +
                     ' <td class="column1">' + vouches[i]["Number_ID"] + '</td>' +
@@ -140,15 +131,11 @@
                     ' <td class="column3">' + vouches[i]["AccountID"] + '</td>' +
                     ' <td class="column4">' + vouches[i]["Comment"] + '</td>' +
                     ' <td class="column5">' + vouches[i]["Date"] + '</td>' +
-
                     '</tr>';
-
             }
             var table_body_element = document.getElementById('tbodyFinal');
             table_body_element.innerHTML = row_data;
             document.getElementById('my_table').appendChild(table_body_element);
-
-
         });
 
     function reverseTable() {
